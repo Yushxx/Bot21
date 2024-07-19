@@ -4,7 +4,7 @@ const schedule = require('node-schedule');
 const http = require('http');
 
 // Remplacez 'YOUR_BOT_TOKEN' par le token de votre bot Telegram
-const bot = new TelegramBot('YOUR_BOT_TOKEN', { polling: true });
+const bot = new TelegramBot('5670838538:AAGFKGb0S7_2WzOtoLGEOXslEeyC9nlAsH0', { polling: true });
 
 function generate_sequence() {
     const sequence = ["🟦", "🟦", "🟦", "🟦", "✈️"];
