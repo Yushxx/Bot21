@@ -60,35 +60,21 @@ ${sequenceTemplate}
 
 // Planification des envois de séquences
 const scheduledTimes = [
-    '0 8 * * *',     // 8h00
-    '45 8 * * *',    // 8h45
-    '30 9 * * *',    // 9h30
-    '15 10 * * *',   // 10h15
-    '0 12 * * *',    // 12h00
-    '45 12 * * *',   // 12h45
-    '30 13 * * *',   // 13h30
-    '5 13 * * *',    // 13h05
-    '8 13 * * *',    // 13h08
-    '15 14 * * *',   // 14h15
-    '0 16 * * *',    // 16h00
-    '45 16 * * *',   // 16h45
-    '30 17 * * *',   // 17h30
-    '15 18 * * *',   // 18h15
-    '0 18 * * *',    // 18h00
-    '30 18 * * *',   // 18h30
-    '0 19 * * *',    // 19h00
-    '30 19 * * *',   // 19h30
-    '0 20 * * *',    // 20h00
-    '30 20 * * *',   // 20h30
-    '0 21 * * *',    // 21h00
-    '30 21 * * *',   // 21h30
-    '0 22 * * *',    // 22h00
-    '30 22 * * *',   // 22h30
-    '0 23 * * *',    // 23h00
-    '30 23 * * *',   // 23h30
-    '0 0 * * *',     // 00h00
+    '*/5 8-8 * * *',    // De 8h00 à 8h30 chaque 5 min
+    '*/10 9-9 * * *',   // De 9h00 à 9h30 chaque 10 min
+    '*/15 9-10 * * *',  // De 9h30 à 11h chaque 15 min
+    '*/7 12-12 * * *',  // De 12h à 13h chaque 7 min
+    '*/15 16-16 * * *', // De 16h à 16h30 chaque 15 min
+    '*/3 16-16 * * *',  // De 16h25 à 16h50 chaque 3 min
+    '*/10 17-17 * * *', // De 17h à 17h30 chaque 10 min
+    '*/15 18-19 * * *', // De 18h à 19h chaque 15 min
+    '*/5 20-20 * * *',  // De 20h à 20h30 chaque 5 min
+    '*/15 20-22 * * *', // De 20h30 à 22h30 chaque 15 min
+    '*/5 22-22 * * *',  // De 22h à 22h20 chaque 5 min
+    '*/10 23-23 * * *', // De 23h à 00h chaque 10 min
 ];
 
+// Créer des tâches planifiées pour chaque heure définie
 scheduledTimes.forEach((time) => {
     schedule.scheduleJob(time, () => {
         sendSequenceToChannel('@solkah00'); // Remplacez par l'identifiant de votre canal
