@@ -21,7 +21,6 @@ const sequenceTemplate = `
 ✈️ kamikaze: 4
 🔐 tentatives: 3
 ⏰ Validity: 5 minutes
-
 `;
 
 // Fonction pour envoyer une séquence dans le canal
@@ -60,19 +59,6 @@ ${sequenceTemplate}
 }
 
 // Planification des envois de séquences
-const scheduleJobWithInterval = (startHour, endHour, intervalMinutes) => {
-    for (let hour = startHour; hour <= endHour; hour++) {
-        for (let minute = 0; minute < 60; minute += intervalMinutes) {
-            if (hour === endHour && minute > 0) break;  // Ne pas dépasser la fin de l'heure
-            schedule.scheduleJob({ hour, minute }, () => {
-                sendSequenceToChannel('@solkah00'); // Remplacez par l'identifiant de votre canal
-            });
-        }
-    }
-};
-
-
-
 const scheduledTimes = [
     '0 8 * * *',     // 8h00
     '45 8 * * *',    // 8h45
@@ -80,8 +66,9 @@ const scheduledTimes = [
     '15 10 * * *',   // 10h15
     '0 12 * * *',    // 12h00
     '45 12 * * *',   // 12h45
-    '3 13 * * *',     //13h03
     '30 13 * * *',   // 13h30
+    '5 13 * * *',    // 13h05
+    '8 13 * * *',    // 13h08
     '15 14 * * *',   // 14h15
     '0 16 * * *',    // 16h00
     '45 16 * * *',   // 16h45
@@ -107,7 +94,6 @@ scheduledTimes.forEach((time) => {
         sendSequenceToChannel('@solkah00'); // Remplacez par l'identifiant de votre canal
     });
 });
-
 
 // Gérer la commande /start
 bot.onText(/\/start/, (msg) => {
