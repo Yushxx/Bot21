@@ -4,7 +4,7 @@ const schedule = require('node-schedule');
 const http = require('http');
 
 // Remplacez 'YOUR_BOT_TOKEN' par le token de votre bot Telegram
-const bot = new TelegramBot('5670838538:AAGFKGb0S7_2WzOtoLGEOXslEeyC9nlAsH0', { polling: true });
+const bot = new TelegramBot('YOUR_BOT_TOKEN', { polling: true });
 
 function generate_sequence() {
     const sequence = ["🟦", "🟦", "🟦", "🟦", "✈️"];
@@ -60,19 +60,45 @@ ${sequenceTemplate}
 }
 
 // Planification des envois de séquences
+const scheduleJobWithInterval = (startHour, endHour, intervalMinutes) => {
+    for (let hour = startHour; hour <= endHour; hour++) {
+        for (let minute = 0; minute < 60; minute += intervalMinutes) {
+            if (hour === endHour && minute > 0) break;  // Ne pas dépasser la fin de l'heure
+            schedule.scheduleJob({ hour, minute }, () => {
+                sendSequenceToChannel('@solkah00'); // Remplacez par l'identifiant de votre canal
+            });
+        }
+    }
+};
+
+
+
 const scheduledTimes = [
-    '0-30/8 8 * * *',    // De 8h00 à 8h30 chaque 5 min
-    '0-10/15 9 * * *',   // De 9h00 à 9h30 chaque 10 min
-    '30-59/20 9-10 * * *', // De 9h30 à 11h chaque 15 min
-    '0-7/10 12 * * *',    // De 12h à 13h chaque 7 min
-    '0-30/15 16 * * *',  // De 16h à 16h30 chaque 10 min
-    '25-50/5 16 * * *',  // De 16h25 à 16h50 chaque 3 min
-    '0-30/15 17 * * *',  // De 17h à 17h30 chaque 10 min
-    '0-14/20 18 * * *',  // De 18h à 19h chaque 15 min
-    '0-5/10 20 * * *',    // De 20h à 20h30 chaque 5 min
-    '30-50/15 20 * * *', // De 20h30 à 22h30 chaque 20 min
-    '0-20/5 22 * * *',   // De 22h à 22h20 chaque 3 min
-    '0-30/10 23 * * *',  // De 23h à 00h chaque 15 min
+    '0 8 * * *',     // 8h00
+    '45 8 * * *',    // 8h45
+    '30 9 * * *',    // 9h30
+    '15 10 * * *',   // 10h15
+    '0 12 * * *',    // 12h00
+    '45 12 * * *',   // 12h45
+    '30 13 * * *',   // 13h30
+    '15 14 * * *',   // 14h15
+    '0 16 * * *',    // 16h00
+    '45 16 * * *',   // 16h45
+    '30 17 * * *',   // 17h30
+    '15 18 * * *',   // 18h15
+    '0 18 * * *',    // 18h00
+    '30 18 * * *',   // 18h30
+    '0 19 * * *',    // 19h00
+    '30 19 * * *',   // 19h30
+    '0 20 * * *',    // 20h00
+    '30 20 * * *',   // 20h30
+    '0 21 * * *',    // 21h00
+    '30 21 * * *',   // 21h30
+    '0 22 * * *',    // 22h00
+    '30 22 * * *',   // 22h30
+    '0 23 * * *',    // 23h00
+    '30 23 * * *',   // 23h30
+    '0 0 * * *',     // 00h00
 ];
 
 scheduledTimes.forEach((time) => {
@@ -80,6 +106,7 @@ scheduledTimes.forEach((time) => {
         sendSequenceToChannel('@solkah00'); // Remplacez par l'identifiant de votre canal
     });
 });
+
 
 // Gérer la commande /start
 bot.onText(/\/start/, (msg) => {
