@@ -35,7 +35,7 @@ ${sequenceTemplate}
 🚨 FONCTIONNE UNIQUEMENT SUR MELBET ET LINEBET AVEC LE CODE PROMO ZFree221 ✅️ !
 
 [S'inscrire](https://bit.ly/3Wk9323)
-[Comment jouer](https://t.me/c/2042765108/68)
+[Comment jouer](https://t.me/c/2042765108/103)
 `;
 
     // Options du clavier inline
@@ -43,7 +43,7 @@ ${sequenceTemplate}
         inline_keyboard: [
             [
                 { text: 'S\'inscrire', url: 'https://bit.ly/3Wk9323' },
-                { text: 'Comment jouer', url: 'https://t.me/c/2042765108/68' }
+                { text: 'Comment jouer', url: 'https://t.me/c/2042765108/103' }
             ]
         ]
     };
@@ -77,7 +77,7 @@ const scheduledTimes = [
 // Créer des tâches planifiées pour chaque heure définie
 scheduledTimes.forEach((time) => {
     schedule.scheduleJob(time, () => {
-        sendSequenceToChannel('@solkah00'); // Remplacez par l'identifiant de votre canal
+        sendSequenceToChannel('-1002042765108'); // Remplacez par l'identifiant de votre canal
     });
 });
 
