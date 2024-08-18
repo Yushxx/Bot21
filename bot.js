@@ -62,13 +62,6 @@ ${sequenceTemplate}
 const scheduledTimes = [
     '*/5 8-8 * * *',    // De 8h00 à 8h30 chaque 5 min
     '*/10 9-9 * * *',   // De 9h00 à 9h30 chaque 10 min
-    '*/15 9-10 * * *',  // De 9h30 à 11h chaque 15 min
-    '*/7 12-12 * * *',  // De 12h à 13h chaque 7 min
-    '*/15 16-16 * * *', // De 16h à 16h30 chaque 15 min
-    '*/3 16-16 * * *',  // De 16h25 à 16h50 chaque 3 min
-    '*/10 17-17 * * *', // De 17h à 17h30 chaque 10 min
-    '*/15 18-19 * * *', // De 18h à 19h chaque 15 min
-    '*/5 20-20 * * *',  // De 20h à 20h30 chaque 5 min
     '*/15 20-22 * * *', // De 20h30 à 22h30 chaque 15 min
     '*/5 22-22 * * *',  // De 22h à 22h20 chaque 5 min
     '*/10 23-23 * * *', // De 23h à 00h chaque 10 min
